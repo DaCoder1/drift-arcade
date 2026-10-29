@@ -39,6 +39,8 @@ func _ready() -> void:
 	_engine_player = AudioStreamPlayer.new()
 	_engine_player.stream = gen
 	_engine_player.volume_db = -14.0
+	# Web builds default to sample playback, which cannot play generator streams.
+	_engine_player.playback_type = AudioServer.PLAYBACK_TYPE_STREAM
 	add_child(_engine_player)
 	_engine_player.play()
 	_engine_playback = _engine_player.get_stream_playback() as AudioStreamGeneratorPlayback

@@ -9,6 +9,24 @@ grab power-ups, smash cones, and spend your cash on upgrades in the garage.
 2. Open Godot, click **Import**, and select this folder's `project.godot`.
 3. Press **F5** to play.
 
+## Playing in the browser
+
+The game is exported for the web and deployed to GitHub Pages by
+`.github/workflows/deploy-web.yml`. The workflow runs on every push to `main`,
+and you can also start it by hand from the repo's **Actions** tab.
+
+One-time setup: in the repo's **Settings → Pages**, set **Source** to **GitHub Actions**.
+GitHub Pages needs either a public repo or a paid GitHub plan.
+
+To build the web version yourself, install the Godot 4.3 export templates
+(Editor → Manage Export Templates), then run **Project → Export → Web**, or:
+
+```bash
+godot --headless --export-release "Web" build/web/index.html
+```
+
+Serve `build/web/` over HTTP to play it. Opening `index.html` directly from disk won't work.
+
 ## How to play
 
 Each run is a timed session in the arena (60 seconds, more with upgrades).

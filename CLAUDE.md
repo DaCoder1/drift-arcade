@@ -25,6 +25,18 @@ art or audio assets.
   the engine sound.
 - `scripts/pickup.gd`, `cone.gd`, `skid_marks.gd`, `chase_camera.gd`: game objects.
 
+## Web build
+
+- `export_presets.cfg` has a single "Web" preset with threads disabled, so it
+  runs on GitHub Pages, which can't send COOP/COEP headers. Web builds always
+  use the Compatibility renderer.
+- `.github/workflows/deploy-web.yml` exports the game with the
+  `barichello/godot-ci:4.3` image and deploys it to GitHub Pages. It runs on
+  pushes to `main` and on manual dispatch.
+- Web audio: the generator stream that makes the engine sound must use
+  `PLAYBACK_TYPE_STREAM` (set in `sfx.gd`).
+- Build output goes to `build/`, which is gitignored.
+
 ## Testing
 
 Headless smoke test. An autopilot drives a short run, grabs every power-up,
